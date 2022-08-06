@@ -32,7 +32,13 @@ function observePosts(threadId: string) {
     { idField: "id" },
   ).pipe(
     distinctUntilChanged(isEqual),
-    tap((posts) => console.log(`Posts for thread "${threadId}"`, posts)),
+    tap((posts) =>
+      console.log(
+        `Posts for thread "${threadId}"`,
+        posts,
+        Math.round(performance.now()),
+      ),
+    ),
     shareReplay(1),
   ) as Observable<Array<IPostDoc & { id: string }>>;
 }
@@ -57,7 +63,13 @@ function observeDraft(threadId: string) {
   ).pipe(
     map((drafts) => drafts[0] ?? null),
     distinctUntilChanged(isEqual),
-    tap((draft) => console.log(`Draft for thread "${threadId}"`, draft)),
+    tap((draft) =>
+      console.log(
+        `Draft for thread "${threadId}"`,
+        draft,
+        Math.round(performance.now()),
+      ),
+    ),
     shareReplay(1),
   ) as Observable<(IPostDoc & { id: string }) | null>;
 }
