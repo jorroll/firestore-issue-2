@@ -1,0 +1,54 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.224.2/containers/typescript-node
+{
+  "name": "Firestore Issue",
+  "build": {
+    "dockerfile": "Dockerfile",
+    // Update 'VARIANT' to pick a Node version: 16, 14, 12.
+    // Append -bullseye or -buster to pin to an OS version.
+    // Use -bullseye variants on local on arm64/Apple Silicon.
+    "args": {
+      "VARIANT": "16-bullseye"
+    }
+  },
+
+  // Set *default* container specific settings.json values on container create.
+  "settings": {},
+
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "mutantdino.resourcemonitor",
+    "toba.vsfire",
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    "mikestead.dotenv",
+    "yzhang.markdown-all-in-one"
+  ],
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [
+    3000, // react app
+    9099, // firebase auth emulator
+    5001, // firebase functions emulator
+    5000, // firebase hosting emulator
+    5500, // firebase emulator ui
+    4400, // firebase emulator hub
+    8080, // firebase firestore emulator
+    9000, // firebase realtime database emulator
+    8085, // firebase pubsub emulator
+    9199, // firebase storage emulator
+    4500 // firebase logging emulator
+  ],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "yes | npm install firebase-tools gulp-cli -g",
+
+  // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "node",
+  "features": {
+    "git": "latest",
+    "java": "lts"
+  }
+}

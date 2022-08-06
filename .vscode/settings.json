@@ -1,8 +1,8 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnPaste": true,
+  // "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "file",
+  // "editor.formatOnSaveMode": "file",
   "tailwindCSS.includeLanguages": {
     "plaintext": "html"
   },
